@@ -1,0 +1,48 @@
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+<body>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Get Approval</th>
+  </tr>
+   {% for product in wproducts %}
+  <tr>
+    <td><a href="{{ product.get_absolute_url }}">{{ product.name }}</a></td>
+    <td> {{ product.price }}</td>
+    <td>
+    <form action="w_p.html" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <p>{{ form.non_field_errors }}</p>
+    <p>{{ form.photo.label_tag }} {{ form.photo.help_text }}</p>
+    <p>
+        {{ form.photo.errors }}
+        {{ form.photo }}
+    </p>
+    <p><input type="submit" value="Upload" /></p>
+
+                   
+</form>
+</td>
+                
+  </tr>
+<br>
+{% endfor %}
+</table>  
+</body>

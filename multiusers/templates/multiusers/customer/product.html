@@ -1,0 +1,14 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+
+{% block form1 %}
+ 
+    <h2 align="center">Viewing Wholesaler Page</h2>    
+        <form method="post" >
+        {% csrf_token %}
+        {{form}}
+         
+        <input type="submit" >
+        </form>
+   
+    {% endblock %}
